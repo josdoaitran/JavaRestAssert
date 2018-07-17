@@ -91,6 +91,12 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
