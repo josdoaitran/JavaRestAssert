@@ -6,23 +6,34 @@ import com.jayway.restassured.internal.http.Method;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 import common.BaseTest;
+import common.Requests;
+import common.jsonData.WeatherJSONData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 import static common.BaseTest.baseAPIUrl;
+import static common.jsonData.WeatherJSONData.triggerWeather;
 
 /**
  * Example test with Rest Assert
  */
-public class getWeatherData extends BaseTest{
-    @Test(description="Testing the web service whether success 200 has been received")
+public class getWeatherData extends Requests{
+    private static Logger logger = Logger.getLogger(getWeatherData.class.getSimpleName());
+    @Test()
     public void testGetWeatherDataFromALocation() {
-        RequestSpecification httpRequest = RestAssured.given();
-        Response response= httpRequest.get(baseAPIUrl+"/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22");
-        String responseBody = response.getBody().asString();
-        System.out.println("Response Body is =>  " + responseBody);
+        Response re = Requests.getRequest("/data/2.5/weather?q=London,uk?appid=e39b66bad0e2961268c73508c026551b");
+        Requests.validateCodeResponse(re,200);
+    }
+    @Test()
+    public void testPostWeatherData() throws IOException {
+        Response re = postRequest("/data/3.0/stations?appid=e39b66bad0e2961268c73508c026551b", triggerWeather);
+        System.out.println(re.toString());
+        Requests.validateCodeResponse(re, 201);
     }
 }
 
