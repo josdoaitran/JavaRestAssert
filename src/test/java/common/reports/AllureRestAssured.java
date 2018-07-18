@@ -1,6 +1,6 @@
 package common.reports;
 
-
+import com.jayway.restassured.filter.Filter;
 import io.qameta.allure.attachment.DefaultAttachmentProcessor;
 import io.qameta.allure.attachment.FreemarkerAttachmentRenderer;
 import io.qameta.allure.attachment.http.HttpRequestAttachment;
@@ -72,4 +72,3 @@ public class AllureRestAssured implements OrderedFilter {
         return Integer.MAX_VALUE;
     }
 }
-
