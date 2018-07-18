@@ -14,6 +14,12 @@
 ```
 ## Run
 
+Run Maven
+
+```$xslt
+mvn clean test allure:report
+```
+
 Start Allure server
 
 ```$xslt
