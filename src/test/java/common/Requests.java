@@ -28,7 +28,7 @@ public class Requests extends BaseTest{
      */
     public static Response getRequest(String apiUrl){
         logger.info("Get request to: "+ apiUrl);
-        Response response = given().get(baseAPIUrl+apiUrl);
+        Response response = given().spec(spec).get(apiUrl);
         String responseBody = response.getBody().asString();
         return response;
     }
@@ -92,8 +92,8 @@ public class Requests extends BaseTest{
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> map = new HashMap<String, Object>();
         map = mapper.readValue(jsonObjectStr, new TypeReference<Map<String, String>>(){});
-        Response response = given()
-                .contentType("application/json").body(map).post(baseAPIUrl+apiUrl);
+        Response response = given().spec(spec)
+                .contentType("application/json").body(map).post(apiUrl);
         String responseBody = response.getBody().asString();
         return response;
     }

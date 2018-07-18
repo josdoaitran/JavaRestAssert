@@ -1,16 +1,9 @@
 package tests;
 
-
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.internal.http.Method;
 import com.jayway.restassured.response.Response;
-import com.jayway.restassured.specification.RequestSpecification;
 import common.BaseTest;
 import common.Requests;
 import common.jsonData.WeatherJSONData;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
